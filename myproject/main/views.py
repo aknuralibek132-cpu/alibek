@@ -9,8 +9,6 @@ from .models import Client, Product, Order, Stock
 from .forms import ClientForm, ProductForm, OrderForm, StockForm
 
 # Create your views here.
-from django.shortcuts import render
-from .models import Client, Product, Order, Stock
 
 def index(request):
     return render(request, "index.html")
