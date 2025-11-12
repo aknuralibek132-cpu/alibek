@@ -2,13 +2,18 @@
 {% block title %}Продукты{% endblock %}
 {% block content %}
 <h2>Продукты</h2>
+<a href="{% url 'product_add' %}" class="btn btn-primary mb-3">+ Добавить продукт</a>
 <table class="table table-striped">
-  <tr><th>ID</th><th>Название</th><th>Цена</th></tr>
+  <tr><th>ID</th><th>Название</th><th>Цена</th><th>Действия</th></tr>
   {% for p in products %}
   <tr>
     <td>{{ p.id }}</td>
     <td>{{ p.name }}</td>
     <td>{{ p.price }} ₸</td>
+    <td>
+      <a href="{% url 'product_edit' p.id %}" class="btn btn-sm btn-warning">✏️</a>
+      <a href="{% url 'product_delete' p.id %}" class="btn btn-sm btn-danger">🗑️</a>
+    </td>
   </tr>
   {% endfor %}
 </table>

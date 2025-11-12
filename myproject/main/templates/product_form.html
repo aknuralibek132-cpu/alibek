@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<h2 class="mb-4">{{ title }}</h2>
+
+<form method="post" class="card p-4 shadow-sm bg-white rounded">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button class="btn btn-success">💾 Сохранить</button>
+  <a href="{% url 'products' %}" class="btn btn-secondary">⬅ Назад</a>
+</form>
+{% endblock %}
