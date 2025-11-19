@@ -1,14 +1,25 @@
 from django.db import models
 
 # Create your models here.
+from django.db import models
+
 class Client(models.Model):
     name = models.CharField(max_length=100, verbose_name="Имя клиента")
     email = models.EmailField(unique=True, verbose_name="Email")
     phone = models.CharField(max_length=20, verbose_name="Телефон")
     address = models.CharField(max_length=200, blank=True, verbose_name="Адрес")
 
+    # добавляем аватар
+    avatar = models.ImageField(
+        upload_to='avatars/',       # папка внутри MEDIA_ROOT
+        blank=True,                 # не обязательно заполнять
+        null=True,                  # можно оставить пустым в базе
+        verbose_name="Аватар"
+    )
+
     def __str__(self):
         return self.name
+
 
 
 class Product(models.Model):
