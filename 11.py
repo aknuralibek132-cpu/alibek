@@ -27,6 +27,7 @@ def save_build_info():
         file.write(f"Build time: {build_time}\n")
     
     print("build_info.txt файлы жаңартылды (Студент №20).")
+    print()
 
 if __name__ == "__main__":
     save_build_info()
