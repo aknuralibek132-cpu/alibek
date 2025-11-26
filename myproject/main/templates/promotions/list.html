@@ -1,0 +1,38 @@
+<h2>Продвижения</h2>
+
+<a href="{% url 'promotion_add' %}">Добавить продвижение</a>
+
+<table border="1" cellpadding="6">
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Тип скидки</th>
+        <th>Размер</th>
+        <th>Доступные товары</th>
+        <th>Дата начала</th>
+        <th>Дата окончания</th>
+        <th>Приоритет</th>
+        <th>Действия</th>
+    </tr>
+
+    {% for p in promotions %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.promotion_name }}</td>
+        <td>{{ p.get_discount_type_display }}</td>
+        <td>{{ p.discount_value }}</td>
+        <td>
+            {% for prod in p.applicable_products.all %}
+                {{ prod.name }}<br>
+            {% empty %} — {% endfor %}
+        </td>
+        <td>{{ p.start_date }}</td>
+        <td>{{ p.end_date }}</td>
+        <td>{{ p.priority }}</td>
+        <td>
+            <a href="{% url 'promotion_edit' p.id %}">Редактировать</a> |
+            <a href="{% url 'promotion_delete' p.id %}">Удалить</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
